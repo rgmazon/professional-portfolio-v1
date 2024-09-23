@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RG Mazon - Full-stack Web Developer</title>
+    <link rel="icon" href="rg-logo.png" type="image/png">
+    <link rel="stylesheet" href="portfolio.css">
+
+    <style>
+        @media (max-width: 768px) {
+        .toggle-button {
+            width: 30px;
+            height: 20px;
+            /* position: relative; 
+            cursor: pointer; */
+        } 
+        .toggle-button span {
+            display: block;
+            position: absolute;
+            height: 3px;
+            width: 100%;
+            background: white;
+            border-radius: 3px;
+            opacity: 1;
+            left: 0;
+            /* right: 10px;
+            top: 10px; */
+            transform: rotate(0deg);
+            transition: .25s ease-in-out;
+        }
+        .toggle-button span:nth-child(1) {
+            top: 0px;
+        }
+        .toggle-button span:nth-child(2),
+        .toggle-button span:nth-child(3) {
+            top: 8px;
+        }
+        .toggle-button span:nth-child(4) {
+            top: 16px;
+        }
+        .toggle-button.active span:nth-child(1) {
+            top: 8px;
+            width: 0%;
+            left: 50%;
+        }
+        .toggle-button.active span:nth-child(2) {
+            transform: rotate(45deg);
+        }
+        .toggle-button.active span:nth-child(3) {
+            transform: rotate(-45deg);
+        }
+        .toggle-button.active span:nth-child(4) {
+            top: 8px;
+            width: 0%;
+            left: 50%;
+        }
+        }
+
+        .cursor-dot,
+        .cursor-dot-outline {
+          pointer-events: none;
+          position: fixed;
+          border-radius: 50%;
+          opacity: 1;
+          transform: translate(-50%, -50%);
+          z-index: 9999;
+        }
+        .cursor-dot {
+          width: 1px;
+          height: 1px;
+        }
+        .cursor-dot-outline {
+          width: 900px;
+          height: 900px;
+          background: radial-gradient(
+            circle,
+            rgba(97, 218, 251, 0.1) 0%,
+            rgba(97, 218, 251, 0) 70%
+          );
+        }
+
+    </style>
+</head>
+<body>
+  <div class="cursor-dot"></div>
+  <div class="cursor-dot-outline"></div>
+
+    <div class="sidebar">
+        <div class="iconss">
+            <div class="mobile-menu-toggle toggle-button" id="toggleButton">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        <img class="rg-logo" src="rg-logo.png" alt="logo">
+        </div>
+        <header>
+          <p class="typing-text">Hi! My name is</p>
+          <h1 class="name">Rudolfh Mazon</h1>
+          <p class="main-title">
+            Junior Web Developer
+          </p>
+          <p class="semi-title">
+            I create responsive, pixel-perfect websites with a focus on
+            accessibility and seamless user experiences, blending frontend,
+            backend, and UI/UX design.
+          </p>
+          <nav>
+            <ul>
+              <li><a href="#about" class="nav-link">01 About</a></li>
+              <li><a href="#projects" class="nav-link">02 Projects</a></li>
+              <li><a href="#skills" class="nav-link">03 Skills</a></li>
+              <li><a href="#contact" class="nav-link">04 Contact</a></li>
+            </ul>
+          </nav>
+        </header>
+      </div>
+  
+      <main class="main-content">
+        <div id="about">
+          <p>
+            Since graduating with a degree in <strong>Information Systems</strong>,
+            I've channeled my expertise into developing a user-centric, responsive
+            designs using cutting-edge technologies ensuring seamless user experiences.
+            My leadership abilities were refined during my tenure as a Team
+            Supervisor, where I fostered a collaborative environment and provided
+            pivotal technical support. This experience, coupled with my academic
+            foundation in web development, propels me to continuously strive for
+            innovation and efficiency in the dynamic IT landscape.
+          </p>
+        </div>
+  
+        <section id="skills">
+          <h2>Skills</h2>
+          <div class="skills-container">
+            <div class="skills">
+              <span class="skill">HTML5</span>
+              <span class="skill">CSS3</span>
+              <span class="skill">JavaScript</span>
+              <span class="skill">React</span>
+              <span class="skill">PHP</span>
+              <span class="skill">MySQL</span>
+              <span class="skill">Git</span>
+              <span class="skill">Github</span>
+              <span class="skill">Bootstrap</span>
+              <span class="skill">Tailwind CSS</span>
+              <span class="skill">WordPress</span>
+            </div>
+          </div>
+        </section>
+  
+        <section id="contact">
+          <h2>Contact Me</h2>
+          <p>Email: <a href="mailto:rgmazon@gmail.com">rgmazon@gmail.com</a></p>
+          <p>
+            LinkedIn:
+            <a href="https://www.linkedin.com/in/rgmazon/" target="_blank"
+              >linkedin.com/in/rgmazon</a
+            >
+          </p>
+          <p>GitHub: github.com/rgmazon</p>
+        </section>
+  
+        <div class="description">
+          <p>
+            Semi designed in Microsoft Powerpoint <br />
+            coded in Visual Studio Code. <br />
+            I used HTML, CSS, JavaScript, and some AI.
+          </p>
+        </div>
+  
+        <footer>
+          <p>&copy; 2024 RG Mazon. All rights reserved.</p>
+        </footer>
+      </main>
+
+
+      <script src="portfolio.js"></script>
+      <script>
+        const toggleButton = document.getElementById('toggleButton');
+        const sidebar = document.querySelector('.sidebar');
+        const mainContent = document.querySelector('.main-content');
+
+        toggleButton.addEventListener('click', () => {
+            toggleButton.classList.toggle('active');
+            sidebar.classList.toggle('active');
+            mainContent.classList.toggle('active');
+        });
+      </script>
+
+      <script>
+        const cursorDot = document.querySelector(".cursor-dot");
+        const cursorOutline = document.querySelector(".cursor-dot-outline");
+
+        function updateCursorPosition(e) {
+          const x = e.clientX;
+          const y = e.clientY;
+
+          cursorDot.style.left = `${x}px`;
+          cursorDot.style.top = `${y}px`;
+          cursorOutline.style.left = `${x}px`;
+          cursorOutline.style.top = `${y}px`;
+        }
+
+        document.addEventListener("mousemove", updateCursorPosition);
+
+      </script>
+</body>
+</html>
